@@ -3,7 +3,7 @@
 bsos 是一个用 Go 编写的 AWS EBS CSI 驱动学习项目。代码配有 Kubernetes 部署清单和一组中文教程，说明一个卷怎样从 PVC 申请，经过创建、附加和节点挂载，最后提供给 Pod 使用。
 
 - 代码仓库：https://github.com/normalzzz/bsos
-- 信息来源：https://github.com/viveksinghggits
+- 信息来源：https://github.com/viveksinghggits/bsos
 
 当前代码用于学习和实验，卷的卸载与回收尚未完成，挂载流程也有需要修正的地方。具体状态和对应代码说明见下文及教程。
 
