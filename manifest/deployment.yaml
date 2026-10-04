@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: bsos
+  name: bsos
+  namespace: kube-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bsos
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: bsos
+    spec:
+      serviceAccount: csi-provisioner
+      containers:
+      - name: external-attacher
+        # Example registry; replace with an image accessible to your cluster.
+        image: registry.example.com/sig-storage/csi-attacher:v4.13.0
+        args:
+        - "--csi-address=$(CSI_ENDPOINT)"
+        volumeMounts:
+        - mountPath: /var/lib/csi/sockets/pluginproxy/
+          name: endpoint-volume
+        env:
+        - name: CSI_ENDPOINT
+          value: /var/lib/csi/sockets/pluginproxy/bsoscsi.sock
+      # Example registry; replace with an image accessible to your cluster.
+      - image: registry.example.com/sig-storage/csi-provisioner:v6.3.0
+        name: external-provisioner
+        args:
+        - "--csi-address=$(CSI_ENDPOINT)"
+        volumeMounts:
+        - mountPath: /var/lib/csi/sockets/pluginproxy/
+          name: endpoint-volume
+        env:
+        - name: CSI_ENDPOINT
+          value: /var/lib/csi/sockets/pluginproxy/bsoscsi.sock
+      # Example registry; replace with an image accessible to your cluster.
+      - image: registry.example.com/bsos:v1.10
+        imagePullPolicy: Always
+        args:
+        - "--endpoint=$(CSI_ENDPOINT)"
+        env:
+        - name: CSI_ENDPOINT
+          value: unix:///var/lib/csi/sockets/pluginproxy/bsoscsi.sock
+        - name: NODEID
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        name: bsos
+        resources: {}
+        volumeMounts:
+        - mountPath: /var/lib/csi/sockets/pluginproxy/
+          name: endpoint-volume
+      volumes:
+      - name: endpoint-volume
+        emptyDir: {}
+status: {}

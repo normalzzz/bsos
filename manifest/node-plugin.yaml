@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-plugin
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      name: node-plugin
+  template:
+    metadata:
+      labels:
+        name: node-plugin
+    spec:
+      volumes:
+        - name: device-dir
+          hostPath:
+            path: /dev
+        - name: pods-vol-dir
+          hostPath:
+            path: /var/lib/kubelet
+        - name: registration-dir
+          hostPath:
+            path: /var/lib/kubelet/plugins_registry/
+            type: DirectoryOrCreate
+        - name: plugin-dir
+          hostPath:
+            path: /var/lib/kubelet/plugins/bsos.normalzzz.csi.dev/
+            type: DirectoryOrCreate
+      serviceAccountName: csi-node-plugin
+      containers:
+      - name: csi-driver-registrar
+        # Example registry; replace with an image accessible to your cluster.
+        image: registry.example.com/sig-storage/csi-node-driver-registrar:v2.18.0
+        args:
+          - "--csi-address=/csi/csi.sock"
+          - "--kubelet-registration-path=/var/lib/kubelet/plugins/bsos.normalzzz.csi.dev/csi.sock"
+        volumeMounts:
+          - name: plugin-dir
+            mountPath: /csi
+          - name: registration-dir
+            mountPath: /registration
+      - name: node-plugin
+        # Example registry; replace with an image accessible to your cluster.
+        image: registry.example.com/bsos:v1.10
+        imagePullPolicy: Always
+        args:
+          - "--endpoint=$(CSI_ENDPOINT)"
+        env:
+        - name: CSI_ENDPOINT
+          value: unix:///csi/csi.sock
+        - name: NODEID
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: pods-vol-dir
+          mountPath: /var/lib/kubelet
+          mountPropagation: "Bidirectional"
+        - name: device-dir
+          mountPath: /dev
+        - name: plugin-dir
+          mountPath: /csi

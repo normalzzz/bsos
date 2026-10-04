@@ -1,0 +1,14 @@
+{
+    "volumeId": "vol-00000000000000000",
+    "nodeId": "i-00000000000000000",
+    "volumeCapability": {
+        "mount": {},
+        "accessMode": {
+            "mode": "SINGLE_NODE_WRITER"
+        }
+    },
+    "volumeContext": {
+        "availabilityZone": "us-east-1a",
+        "storage.kubernetes.io/csiProvisionerIdentity": "0000000000000-0000-bsos.normalzzz.csi.dev"
+    }
+}

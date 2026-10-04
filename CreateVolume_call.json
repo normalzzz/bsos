@@ -1,0 +1,66 @@
+[
+    {
+        "name": "pvc-00000000-0000-4000-8000-000000000001",
+        "capacityRange": {
+            "requiredBytes": "3221225472"
+        },
+        "volumeCapabilities": [
+            {
+                "mount": {},
+                "accessMode": {
+                    "mode": "SINGLE_NODE_WRITER"
+                }
+            }
+        ]
+    },
+    {
+        "name": "pvc-00000000-0000-4000-8000-000000000002",
+        "capacityRange": {
+            "requiredBytes": "3221225472"
+        },
+        "volumeCapabilities": [
+            {
+                "mount": {},
+                "accessMode": {
+                    "mode": "SINGLE_NODE_WRITER"
+                }
+            }
+        ],
+        "accessibilityRequirements": {
+            "requisite": [
+                {
+                    "segments": {
+                        "topology.kubernetes.io/zone": "us-east-1a"
+                    }
+                },
+                {
+                    "segments": {
+                        "topology.kubernetes.io/zone": "us-east-1b"
+                    }
+                },
+                {
+                    "segments": {
+                        "topology.kubernetes.io/zone": "us-east-1c"
+                    }
+                }
+            ],
+            "preferred": [
+                {
+                    "segments": {
+                        "topology.kubernetes.io/zone": "us-east-1a"
+                    }
+                },
+                {
+                    "segments": {
+                        "topology.kubernetes.io/zone": "us-east-1b"
+                    }
+                },
+                {
+                    "segments": {
+                        "topology.kubernetes.io/zone": "us-east-1c"
+                    }
+                }
+            ]
+        }
+    }
+]

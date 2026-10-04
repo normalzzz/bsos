@@ -1,0 +1,21 @@
+# Local credentials and environment configuration.
+.env
+.env.*
+!.env.example
+.aws/
+.kube/
+kubeconfig
+kubeconfig.*
+*.pem
+*.key
+*.p12
+*.pfx
+credentials
+credentials.*
+
+# Local deployment overrides and raw runtime captures.
+*.local.yaml
+*.local.yml
+*.local.json
+*.log
+logs/

@@ -1,0 +1,14 @@
+{
+    "name": "pvc-00000000-0000-4000-8000-000000000003",
+    "capacityRange": {
+        "requiredBytes": "3221225472"
+    },
+    "volumeCapabilities": [
+        {
+            "mount": {},
+            "accessMode": {
+                "mode": "SINGLE_NODE_WRITER"
+            }
+        }
+    ]
+}
