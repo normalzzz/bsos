@@ -7,6 +7,14 @@ bsos 是一个用 Go 编写的 AWS EBS CSI 驱动学习项目。代码配有 Kub
 
 当前代码用于学习和实验，卷的卸载与回收尚未完成，挂载流程也有需要修正的地方。具体状态和对应代码说明见下文及教程。
 
+## 学习来源与项目关系
+
+本项目作者通过 viveksinghggits 的 YouTube CSI 教程和 bsos 仓库学习相关实现，参考了部分代码的编写方式，并结合 CSI 规范和 AWS EBS 接口编写本仓库的实验代码与中文教程。
+
+本项目由本仓库作者维护。参考来源的标注不表示相关作者参与维护、认可本项目或已经给予授权。完整的来源与版权说明见：
+
+https://github.com/normalzzz/bsos/blob/main/NOTICE.md
+
 ## 组件如何配合
 
 驱动名称为 `bsos.normalzzz.csi.dev`。Controller 和 Node 使用同一个 Go 程序，每个进程都提供 Identity、Controller、Node 三个 CSI Service，但分别运行在不同的 Pod 中。
@@ -159,3 +167,8 @@ kubectl exec -n bsos-demo bsos-demo -- df -h /data
 
 卷 ID、VolumeAttachment、节点挂载表和文件读写结果需要一起核对，完整操作见 doc8。删除和卸载方法尚未实现，删除 Pod 或 PVC 不能作为后端卷已回收的依据；测试卷的保留和后续处理也见 doc8。
 
+## 版权与许可
+
+本仓库当前未提供统一的开源许可证。来源标注用于说明学习和参考关系，不构成对第三方内容的重新授权；第三方内容与依赖仍适用其自身的许可证或其他有效授权。
+
+本项目用于学习和技术交流，但这一用途及来源声明不能替代依法需要取得的许可，也不表示本仓库已经完成版权审查。具体说明及反馈方式见 `NOTICE.md`。
