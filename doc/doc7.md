@@ -2,6 +2,8 @@
 
 - 代码仓库：https://github.com/normalzzz/bsos
 - 信息来源：https://github.com/viveksinghggits
+- 参考项目：https://github.com/viveksinghggits/bsos
+- 来源与许可说明：https://github.com/normalzzz/bsos/blob/main/NOTICE.md
 
 EBS 卷附加到 EC2 实例后，节点操作系统可以发现一个块设备，例如 `/dev/sdf`。块设备提供按块读写数据的能力，应用却通常希望通过 `/data/hello.txt` 这样的文件路径读写。中间还需要文件系统和挂载操作。
 

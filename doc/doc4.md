@@ -2,6 +2,8 @@
 
 - 代码仓库：https://github.com/normalzzz/bsos
 - 信息来源：https://github.com/viveksinghggits
+- 参考项目：https://github.com/viveksinghggits/bsos
+- 来源与许可说明：https://github.com/normalzzz/bsos/blob/main/NOTICE.md
 
 上一篇《Go CSI Driver 的启动与能力发现》介绍了 gRPC 服务的启动。Controller Pod 中的 sidecar 通过共享 socket 调用驱动；节点端还需要把驱动名称和 socket 地址告诉 kubelet，让它能调用 Node Service。
 

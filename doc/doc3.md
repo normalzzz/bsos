@@ -2,6 +2,8 @@
 
 - 代码仓库：https://github.com/normalzzz/bsos
 - 信息来源：https://github.com/viveksinghggits
+- 参考项目：https://github.com/viveksinghggits/bsos
+- 来源与许可说明：https://github.com/normalzzz/bsos/blob/main/NOTICE.md
 
 要让 provisioner 调用 `CreateVolume`，先要有一个正在监听的驱动进程。本篇从 `main.go` 看这个进程如何启动，以及 sidecar 如何确认自己连接到了正确的驱动。
 

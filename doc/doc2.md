@@ -2,6 +2,8 @@
 
 - 代码仓库：https://github.com/normalzzz/bsos
 - 信息来源：https://github.com/viveksinghggits
+- 参考项目：https://github.com/viveksinghggits/bsos
+- 来源与许可说明：https://github.com/normalzzz/bsos/blob/main/NOTICE.md
 
 一个 EBS 卷要交给 Pod 使用，通常要经过创建卷、附加到 EC2 实例、节点挂载这几个过程。CSI 把相关方法放在三个 Service 中：Identity 用于了解驱动本身，Controller 用于管理后端卷，Node 用于处理使用卷的节点上的操作。部署方式见《CSI 简介与部署方式》。
 

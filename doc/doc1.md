@@ -2,6 +2,8 @@
 
 - 代码仓库：https://github.com/normalzzz/bsos
 - 信息来源：https://github.com/viveksinghggits
+- 参考项目：https://github.com/viveksinghggits/bsos
+- 来源与许可说明：https://github.com/normalzzz/bsos/blob/main/NOTICE.md
 
 假设一个应用需要把文件保存在 `/data`，并希望 Pod 重建后还能读到这些文件。应用可以通过 PersistentVolumeClaim（PVC）申请持久化存储，再在 Pod 配置中引用这个 PVC。Kubernetes 根据配置安排创建存储、连接节点和挂载目录等操作。
 

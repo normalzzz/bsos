@@ -2,6 +2,8 @@
 
 - 代码仓库：https://github.com/normalzzz/bsos
 - 信息来源：https://github.com/viveksinghggits
+- 参考项目：https://github.com/viveksinghggits/bsos
+- 来源与许可说明：https://github.com/normalzzz/bsos/blob/main/NOTICE.md
 
 仓库的 `examples` 目录提供了 StorageClass、PVC 和 Pod。这里使用这组清单检查卷的创建、附加和挂载，再向卷中写入文件，观察数据是否保留。
 

@@ -2,6 +2,8 @@
 
 - 代码仓库：https://github.com/normalzzz/bsos
 - 信息来源：https://github.com/viveksinghggits
+- 参考项目：https://github.com/viveksinghggits/bsos
+- 来源与许可说明：https://github.com/normalzzz/bsos/blob/main/NOTICE.md
 
 `CreateVolume` 创建 EBS 卷后，AWS 中已经有了这个卷，但应用节点还不能使用它。附加（attach）要解决的是：把这个卷连接到哪个 EC2 实例，让实例的操作系统能够发现对应的块设备。
 

@@ -2,6 +2,8 @@
 
 - 代码仓库：https://github.com/normalzzz/bsos
 - 信息来源：https://github.com/viveksinghggits
+- 参考项目：https://github.com/viveksinghggits/bsos
+- 来源与许可说明：https://github.com/normalzzz/bsos/blob/main/NOTICE.md
 
 动态供应是指：用户通过 PVC 申请存储后，由 Kubernetes 和存储驱动创建符合要求的卷，无需管理员预先准备每个卷和 PV。
 
